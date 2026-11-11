@@ -5,6 +5,26 @@
 
 Copyright © 2026 Samuel Texa · MIT License
 
+## Engineering & Security Decisions
+
+Read [Engineering & Security Decisions](docs/engineering/SECURITY_DECISIONS.md) for the rationale behind deterministic analysis, evidence provenance, scenario ownership and application security controls.
+
+## Architecture
+
+Read [System Architecture](docs/architecture/SYSTEM_ARCHITECTURE.md) for the components, trust boundaries and local execution model.
+
+## Technical Evidence
+
+Read [Technical Evidence & Verification](docs/security/TEST_EVIDENCE.md) and [Threat Model](docs/security/THREAT_MODEL.md).
+
+## Scope
+
+Synthetic demonstration only. Not a vulnerability scanner, exploitation framework, production security assessment or proof of real-world exploitability.
+
+**Author:** Samuel Texa · **License:** MIT
+
+---
+
 ## Screenshots
 
 Real screenshots from the locally running theghost application.
