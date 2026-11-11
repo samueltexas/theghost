@@ -1,0 +1,61 @@
+name: theghost
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: theghost
+      POSTGRES_USER: theghost
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U theghost -d theghost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    security_opt:
+      - no-new-privileges:true
+  engine:
+    build: ./engines/security-engine
+    ports:
+      - "127.0.0.1:8001:8001"
+    environment:
+      GHOST_DEMO_MODE: "true"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/health', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  api:
+    build: ./apps/api
+    environment:
+      ENGINE_URL: http://engine:8001
+      GHOST_BOOTSTRAP_PASSWORD: ${GHOST_BOOTSTRAP_PASSWORD:?Set GHOST_BOOTSTRAP_PASSWORD in .env}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/theghost
+      SPRING_DATASOURCE_USERNAME: theghost
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      SPRING_SQL_INIT_MODE: always
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      engine:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    security_opt:
+      - no-new-privileges:true
+  web:
+    build: ./apps/web
+    ports:
+      - "127.0.0.1:4173:80"
+    depends_on: [api]
+volumes:
+  postgres_data:

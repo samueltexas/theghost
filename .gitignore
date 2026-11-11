@@ -1,0 +1,59 @@
+.env
+.env.*
+!.env.example
+.DS_Store
+node_modules/
+dist/
+target/
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.db
+*.sqlite
+*.log
+coverage/
+
+# Local secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Dependencies and build outputs
+node_modules/
+target/
+dist/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Local backups and logs
+*.bak
+*.log
+.DS_Store
+
+# Local databases and temporary files
+*.sqlite
+*.sqlite3
+*.db
+
+# Local patch backups
+.phase7*-backup-/
+.phase7*-backup-*/
+*.before-phase*.bak
+
+# Local security reviews and development backups
+security-review/
+theghost-security-review.zip
+.phase7*-backup/
+.gitignore.backup-*.bak
+
+# Generated TypeScript files and local security reviews
+*.tsbuildinfo
+
+# Local development archive
+.development-archive/
