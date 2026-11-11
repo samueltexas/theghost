@@ -5,6 +5,56 @@
 
 Copyright © 2026 Samuel Texa · MIT License
 
+## Screenshots
+
+Real screenshots from the locally running theghost application.
+All modeled infrastructure and analysis data are synthetic.
+
+### Platform Overview
+
+![theghost landing page](docs/screenshots/01-landing-page.png)
+
+### Command Center
+
+![Administrator dashboard](docs/screenshots/02-command-center-admin.png)
+
+### Digital Twin & Asset Inspection
+
+![Digital twin](docs/screenshots/03-digital-twin.png)
+
+![Asset inspector](docs/screenshots/04-asset-inspector.png)
+
+### Attack Path Analysis
+
+![Attack path analysis](docs/screenshots/05-attack-paths.png)
+
+### Simulations & Scenario Comparison
+
+![Security simulations](docs/screenshots/06-simulations.png)
+
+![Scenario comparison](docs/screenshots/07-parallel-universes.png)
+
+### Defense Optimization
+
+![Defense optimizer](docs/screenshots/08-defense-optimizer.png)
+
+### Deterministic Investigator
+
+![Rule-based investigator](docs/screenshots/09-deterministic-investigator.png)
+
+The investigator uses deterministic, evidence-grounded responses.
+No LLM is connected in this release.
+
+### Role-Based Interface
+
+![Analyst dashboard](docs/screenshots/10-command-center-analyst.png)
+
+The administrator and analyst screenshots illustrate different
+authenticated sessions. Authorization is enforced by the backend
+and covered by automated security tests.
+
+---
+
 ## Implemented capabilities
 
 - Responsive React and TypeScript dashboard with a public synthetic demonstration.
